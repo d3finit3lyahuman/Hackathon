@@ -1,0 +1,8 @@
+campus.json
+RGU Garthdee Campus Map - with Student Services.svg
+mapenv
+rgumap_project/map/static/map
+rgumap_project/rgumap_project
+rgumap_project/map/__pycache__
+rgumap_project/map/migrations
+

@@ -1,0 +1,52 @@
+{% extends '../map/base.html' %}
+{% block content %}
+
+  <article class="container mt-5">
+    <div class="media-body col-12">
+        <div class="card-body bg-transparent">
+            <div>
+                <div class="ml-3 article-metadata">
+
+                    {% for school in data.School%}
+                    <!-- Print first json object -->
+                    {% for attribute, value in school.items %}
+                    
+                    <div class="card-header">
+                        <h3 class="card-title">{{attribute}}</h3>
+                    </div>
+                    {% for k, v in value.items %}
+                    {% comment %} <h3>{{attribute}}</h3> {% endcomment %}
+                    {% if k != "Rooms" %}
+        
+                        <p class="card-subtitle mb-3 text-muted">{{k}} : {{v}}</p>
+                        
+                    {% else %}
+                    
+                        <h4>Rooms:</h4>
+                        <ul>
+                            {% for room in v %}
+                                {% for room_number, room_details in room.items %}
+                                    <li>{{ room_number }} - {{ room_details.room_type }}, capacity: {{ room_details.room_capacity }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    
+                    {% endif %}
+
+                    {% endfor %}
+        
+                    {% endfor %}
+                    
+                    {% endfor %}
+                    
+                </div>
+                
+            </div>            
+        
+        </div>
+        
+    </div>
+    
+  </article>
+
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title></title>
+
+    {% comment %} Bootstrap CSS {% endcomment %}
+    {% comment %} <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'map/css/bootstrap.min.css' %}"
+    /> {% endcomment %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+      {% comment %} Responsive Navbar {% endcomment %}
+      <header class="site-header">
+        <nav
+          class="navbar navbar-expand-lg bg-body-tertiary fixed-top"
+          data-bs-theme="light"
+        >
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'map-home' %}">RGUMap</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarToggler"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+              <div class="navbar-nav">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="{% url 'map-home' %}"
+                  >Home</a
+                >
+                {% comment %}
+                <a class="nav-link" href="{% url 'blog-about' %}">About</a> {%
+                endcomment %}
+              </div>
+              <!-- Right Side -->
+              <div class="navbar-nav ms-auto">
+                {% comment %} {% if user.is_authenticated %} {% endcomment %} 
+                {%comment %}
+                <a class="nav-link" href="{% url 'post-create' %}">New Post</a>
+                {% endcomment %} {% comment %}
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a> {%
+                endcomment %} {% comment %}
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a> {%
+                endcomment %} {% comment %} {% else %} {% endcomment %}
+                <a class="nav-link" href="">Login</a>
+                <a class="nav-link" href="">Register</a>
+                {% comment %} {% endif %} {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main role="main" class="container">
+        {% comment %} <div class="row"> {% endcomment %}
+            {% comment %} <div class="col-md-12"> {% endcomment %}
+               {% block content %}
+               {% endblock content %}
+            {% comment %} </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+      </main>
+
+
+      <!-- Bootstrap JS -->
+        {% comment %} <script src="{% static 'map/js/bootstrap.bundle.min.js' %}"></script> {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  </body>
+</html>

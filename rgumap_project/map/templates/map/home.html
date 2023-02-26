@@ -1,0 +1,33 @@
+{% extends 'map/base.html' %} 
+{% block content %} {% comment %} Welcome page
+with centered big text, search bar and search button, use bootstrap, place in
+center of page {% endcomment %}
+<div class="d-flex align-items-center vh-100">
+  <div class="container text-center">
+    <h1 class="display-4">Welcome to the Map</h1>
+    <p class="lead">Taking out the frustration in finding your location!</p>
+    <form class="form-inline" action="{%url 'map-search' %}">
+      <div class="form-group mx-sm-3 mb-2">
+        <input
+          type="text"
+          class="form-control"
+          name="q"
+          placeholder="Search for a location"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+
+
+    {% if matching_results %}
+    <h2>Search results:</h2>
+    <ul>
+      {% for room in matching_results.items %}
+        <li>{{room}}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  </div>
+</div>
+{% endblock content %}
