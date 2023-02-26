@@ -4,8 +4,8 @@ with centered big text, search bar and search button, use bootstrap, place in
 center of page {% endcomment %}
 <div class="d-flex align-items-center vh-100">
   <div class="container text-center">
-    <h1 class="display-4">Welcome to the Map</h1>
-    <p class="lead">Taking out the frustration in finding your location!</p>
+    <h1 class="display-4">Welcome to OnPoint</h1>
+    <p class="lead">Pointing you in the right direction! </p>
     <form class="form-inline" action="{%url 'map-search' %}">
       <div class="form-group mx-sm-3 mb-2">
         <input
@@ -23,7 +23,8 @@ center of page {% endcomment %}
     <h2>Search results:</h2>
     <ul>
       {% for room in matching_results.items %}
-        <li>{{room}}</li>
+        <li class="list-group-item">{{room}}</li>
+        {% comment %} <li>{{matching_results[room]}}</li> {% endcomment %}
       {% endfor %}
     </ul>
   {% endif %}
