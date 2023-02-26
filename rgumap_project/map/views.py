@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 from django.shortcuts import render
 from django.contrib import messages
 
@@ -34,10 +35,19 @@ def getMapData(request):
 
 
 def get_campus_data():
-    url = 'https://rgumap-7c428-default-rtdb.europe-west1.firebasedatabase.app/Campus.json'
-    response = requests.get(url)
-    data = json.loads(response.text)
-    campus_data = {}
+
+    # if in production, use campus.json instead of the url
+
+    # check if in production
+    if os.environ.get('DJANGO_SETTINGS_MODULE') == 'rgumap_project.settings.production':
+        with open('campus.json') as f:
+            data = json.load(f)
+            campus_data = {}
+    else:
+        url = 'https://rgumap-7c428-default-rtdb.europe-west1.firebasedatabase.app/Campus.json'
+        response = requests.get(url)
+        data = json.loads(response.text)
+        campus_data = {}
 
     if 'School' in data:
         for school in data['School']:
