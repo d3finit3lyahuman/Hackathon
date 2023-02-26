@@ -21,7 +21,7 @@ center of page {% endcomment %}
 
     {% if matching_results %}
     <h2>Search results:</h2>
-    <ul>
+    <ul class="list-group">
       {% for room in matching_results.items %}
         <li class="list-group-item">{{room}}</li>
         {% comment %} <li>{{matching_results[room]}}</li> {% endcomment %}
